@@ -2,6 +2,8 @@
 
 > This is just a simple attempt to clone the original animate.css website as part of a "transition" exercise using Vue.js.
 
+[Live Demo](http://www.rhcapati.com.br/demo/vuejs-transitions/)
+
 ## Build Setup
 
 ``` bash

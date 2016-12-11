@@ -8,7 +8,7 @@
           :appear-active-class="animation"
           v-on:before-leave="beforeLeave"
           appear>
-          <img v-if="show" :class="['animated', selectedAnimation]" src="/src/assets/logo.png" alt="Vue.js logo">
+          <img v-if="show" :class="['animated', selectedAnimation]" src="src/assets/logo.png" alt="Vue.js logo">
         </transition>
         <h2 class="subtitle has-text-centered">Select an animation to run</h2>
       </div>
