@@ -4,7 +4,11 @@
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
         <!--<h1 class="title has-text-centered">Animate.css</h1>-->
-        <img src="/src/assets/logo.png" alt="Logo do Vue.js">
+        <transition
+          :appear-active-class="animacao"
+          appear>
+          <img v-if="exibir" src="/src/assets/logo.png" alt="Logo do Vue.js">
+        </transition>
         <h2 class="subtitle has-text-centered">Selecione uma animação de exemplo</h2>
       </div>
     </div>
@@ -13,13 +17,13 @@
       <div class="column is-half is-offset-one-quarter">
         <div class="control has-addons has-addons-centered">
           <span class="select is-medium">
-            <select v-model="animacao">
+            <select v-model="animacaoSelecionada">
               <optgroup label="Destaques">
                 <option v-for="animacao in animacoes.destaques">{{ animacao }}</option>
               </optgroup>
             </select>
           </span>
-          <button class="button is-success is-outlined is-large">Animar</button>
+          <button @click="animar" class="button is-success is-outlined is-large">Animar</button>
         </div>
       </div>
     </div>
@@ -44,7 +48,9 @@
   export default {
     data() {
       return {
-        animacao: "bounce",
+        animacao: "",
+        animacaoSelecionada: "bounce",
+        exibir: true,
         animacoes: {
           destaques: [
             "bounce",
@@ -60,6 +66,16 @@
         },
       };
     },
+    computed: {
+      animacao() {
+        return "animated " + this.animacaoSelecionada;
+      },
+    },
+    methods: {
+      animar() {
+        
+      },
+    }
   }
 </script>
 
