@@ -1,6 +1,6 @@
-# animate-css-clone
+# Animate.css transitions
 
-> A Vue.js project
+> This is just a simple attempt to clone the original animate.css website as part of a "transition" exercise using Vue.js.
 
 ## Build Setup
 
