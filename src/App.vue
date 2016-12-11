@@ -6,8 +6,9 @@
         <!--<h1 class="title has-text-centered">Animate.css</h1>-->
         <transition
           :appear-active-class="animacao"
+          v-on:before-leave="beforeLeave"
           appear>
-          <img v-if="exibir" src="/src/assets/logo.png" alt="Logo do Vue.js">
+          <img v-if="exibir" :class="['animated', animacaoSelecionada]" src="/src/assets/logo.png" alt="Logo do Vue.js">
         </transition>
         <h2 class="subtitle has-text-centered">Selecione uma animação de exemplo</h2>
       </div>
@@ -56,7 +57,7 @@
             "bounce",
             "flash",
             "pulse",
-            "rubberBamd",
+            "rubberBand",
             "shake",
             "swing",
             "tada",
@@ -72,10 +73,14 @@
       },
     },
     methods: {
-      animar() {
-        
+      animar(evento) {
+        this.exibir = false;
+        evento.target.blur();
       },
-    }
+      beforeLeave() {
+        this.exibir = true;
+      }
+    },
   }
 </script>
 
