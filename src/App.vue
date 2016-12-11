@@ -5,12 +5,12 @@
       <div class="column is-half is-offset-one-quarter">
         <!--<h1 class="title has-text-centered">Animate.css</h1>-->
         <transition
-          :appear-active-class="animacao"
+          :appear-active-class="animation"
           v-on:before-leave="beforeLeave"
           appear>
-          <img v-if="exibir" :class="['animated', animacaoSelecionada]" src="/src/assets/logo.png" alt="Logo do Vue.js">
+          <img v-if="show" :class="['animated', selectedAnimation]" src="/src/assets/logo.png" alt="Vue.js logo">
         </transition>
-        <h2 class="subtitle has-text-centered">Selecione uma animação de exemplo</h2>
+        <h2 class="subtitle has-text-centered">Select an animation to run</h2>
       </div>
     </div>
 
@@ -18,13 +18,13 @@
       <div class="column is-half is-offset-one-quarter">
         <div class="control has-addons has-addons-centered">
           <span class="select is-medium">
-            <select v-model="animacaoSelecionada">
-              <optgroup label="Destaques">
-                <option v-for="animacao in animacoes.destaques">{{ animacao }}</option>
+            <select v-model="selectedAnimation">
+              <optgroup label="Highlights">
+                <option v-for="animation in animations.highlights">{{ animation }}</option>
               </optgroup>
             </select>
           </span>
-          <button @click="animar" class="button is-success is-outlined is-large">Animar</button>
+          <button @click="animate" class="button is-success is-outlined is-large">Animate it</button>
         </div>
       </div>
     </div>
@@ -33,11 +33,11 @@
       <div class="column is-half is-offset-one-quarter">
         <hr>
         <small class="has-text-centered">
-          Desenvolvido por: <strong>Rafael Henrique Capati</strong>
+          Developed by: <strong><a href="http://www.rhcapati.com.br/">Rafael Henrique Capati</a></strong>
         </small>
         <small class="has-text-centered">
-          Implementado com: <a href="http://vuejs.org" target="_blank">Vue.js</a>
-          e <a href="http://bulma.io" target="_blank">Bulma.css</a>
+          Featured with: <a href="http://vuejs.org" target="_blank">Vue.js</a>
+          and <a href="http://bulma.io" target="_blank">Bulma.css</a>
         </small>
       </div>
     </div>
@@ -49,11 +49,11 @@
   export default {
     data() {
       return {
-        animacao: "",
-        animacaoSelecionada: "bounce",
-        exibir: true,
-        animacoes: {
-          destaques: [
+        animation: "",
+        selectedAnimation: "bounce",
+        show: true,
+        animations: {
+          highlights: [
             "bounce",
             "flash",
             "pulse",
@@ -68,17 +68,17 @@
       };
     },
     computed: {
-      animacao() {
-        return "animated " + this.animacaoSelecionada;
+      animation() {
+        return "animated " + this.selectedAnimation;
       },
     },
     methods: {
-      animar(evento) {
-        this.exibir = false;
-        evento.target.blur();
+      animate(event) {
+        this.show = false;
+        event.target.blur();
       },
       beforeLeave() {
-        this.exibir = true;
+        this.show = true;
       }
     },
   }
